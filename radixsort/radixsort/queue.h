@@ -29,21 +29,23 @@ public:
 			count++;
 		}
 	}
-	int Pop() {
+	int Pop() 
+	{
 		if (count == 0)
-			return 0;
-		else {
+			return 0xffffffff;
+		else 
+		{
 			element * tmp = first;
-			first = last->Getnext();
+			first = first->Getnext();
 			int a = tmp->Getmem();
 			tmp->Setnext(0);
 			delete tmp;
 			count--;
 		
-		if (count == 0) 
+		    if (count == 0) 
 			last = 0;
 		
-		return a;
+		     return a;
 		}
 	}
 	queue(const queue & tmp) {
@@ -67,6 +69,15 @@ public:
 		}
 		
 
+	}
+	int getcount() {
+		return count;
+	}
+	void * getlast() {
+		return last;
+	}
+	void * getfirst() {
+		return first;
 	}
 };
 
