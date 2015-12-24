@@ -2,6 +2,7 @@
 #include "element.h"
 class queue
 {
+
 private: 
 	element* last;
 	element * first;
@@ -32,7 +33,7 @@ public:
 	int Pop() 
 	{
 		if (count == 0)
-			return 0xffffffff;
+			return -1;
 		else 
 		{
 			element * tmp = first;
@@ -79,5 +80,6 @@ public:
 	void * getfirst() {
 		return first;
 	}
+
 };
 

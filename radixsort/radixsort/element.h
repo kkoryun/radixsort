@@ -1,6 +1,7 @@
 #pragma once
 class element
 {
+
 private: int mem;
 		 element * next;
 public:
@@ -23,5 +24,7 @@ public:
 	~element() { 
 		if (next !=0)
 		delete[] next; }
+
+
 };
 

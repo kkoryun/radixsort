@@ -3,34 +3,52 @@
 #include"queue.h"
 class radixsort
 {
+
 private : 
-	queue q;
+	queue * q;
 public:
-	radixsort(int * arr, int size){
-		q = new queue()[10];
-		int max = 0;
+	radixsort(int * arr, int size)
+	{
+		q = new queue[10];
+		//find max elem in array
+		int max = arr[0];
 		for (size_t i = 0; i < size; i++)
 		{
 			if (max < arr[i])
 				max = arr[i];
 		}
+		//find  number of radix in max
 		int k = 0;
-		while (max !=0)
+		while (max != 0)
 		{
 			k++;
-			max = max / 10;
+			max /= 10;
 		}
+
+		//sort algoritm
+		int t = 0;
+		int y = 0;
 		for (size_t i = 0; i < k; i++)
-			for (size_t j = 0; j < size; j++)
-				q[(arr[j] / pow(10, i) % 10)] = arr[i];
-		
-		size = 0;
-		for (size_t i = 0; i < 10; i++)
 		{
-			while (!q.Isempty())
-				arr[size++] = q[i].Pop();
+			for (size_t j = 0; j < size; j++)
+			{
+				t = arr[j] / pow(10, i);
+				y = t % 10;
+				q[y].Push(arr[j]);
+			}
+			size = 0;
+			for (size_t l = 0; l < 10; l++)
+			{
+				while (!q[l].Isempty())
+					arr[size++] = q[l].Pop();
+			}
 		}
+		
 	}
-	~radixsort();
+	~radixsort() {
+		delete q;
+	}
+
+
 };
 
